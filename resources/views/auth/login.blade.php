@@ -59,7 +59,10 @@
                     <option value="Manajemen">Manajemen</option>
                 </select>
             </div>
-            
+            {{-- Tambahkan setelah form --}}
+<div style="text-align: center; margin-top: 20px;">
+    <p>Belum punya akun? <a href="{{ route('register') }}" style="color: #4a2c82; font-weight: 600;">Daftar di sini</a></p>
+</div>
             <button type="submit" class="btn-login">Login</button>
         </form>
     </div>
@@ -68,20 +71,16 @@
         <form action="{{ route('login.dosen') }}" method="POST">
             @csrf
             <div class="form-group">
-    <label>NIM / Email</label>
-    <input type="text" name="nim" class="form-control" placeholder="Masukkan NIM atau Email" required>
-</div>
+                <label>Username</label>
+                <input type="text" name="username" required>
+            </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+                <input type="password" name="password" required>
             </div>
             <button type="submit" class="btn-login">Login</button>
             <p style="text-align: center; margin-top: 10px;">Demo: dosen / 123</p>
         </form>
-        {{-- Tambahkan setelah form --}}
-<div style="text-align: center; margin-top: 20px;">
-    <p>Belum punya akun? <a href="{{ route('register') }}" style="color: #4a2c82; font-weight: 600;">Daftar di sini</a></p>
-</div>
     </div>
 </div>
 
@@ -93,6 +92,5 @@ function switchTab(role) {
     event.target.classList.add('active');
     document.getElementById(`login${role.charAt(0).toUpperCase() + role.slice(1)}`).classList.add('active');
 }
-
 </script>
 @endsection
