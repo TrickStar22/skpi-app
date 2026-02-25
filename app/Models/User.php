@@ -19,12 +19,14 @@ class User extends Authenticatable
         'nidn',
         'prodi',
         'username',
+        'status_verifikasi',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
+    
 
     protected function casts(): array
     {
@@ -47,5 +49,14 @@ class User extends Authenticatable
     public function isMahasiswa()
     {
         return $this->role === 'mahasiswa';
+    }
+    public function isVerified()
+    {
+    return $this->status_verifikasi === 'verified';
+    }
+
+    public function isPending()
+    {
+    return $this->status_verifikasi === 'pending';
     }
 }

@@ -14,44 +14,61 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function loginMahasiswa(Request $request)
-    {
-        $request->validate([
-            'nim' => 'required',
-            'name' => 'required',
-            'prodi' => 'required',
-        ]);
+   // Fungsi register mahasiswa
+public function registerMahasiswa(Request $request)
+{
+    $request->validate([
+        'nim' => 'required|unique:users',
+        'name' => 'required',
+        'email' => 'required|email|unique:users',
+        'prodi' => 'required',
+    ]);
 
-        $user = User::where('nim', $request->nim)->first();
+    // Buat user baru dengan status pending
+    $user = User::create([
+        'name' => $request->name,
+        'nim' => $request->nim,
+        'email' => $request->email,
+        'prodi' => $request->prodi,
+        'role' => 'mahasiswa',
+        'password' => Hash::make($request->nim), // password default = NIM
+        'status_verifikasi' => 'pending',
+    ]);
 
-        if (!$user) {
-            $user = User::create([
-                'name' => $request->name,
-                'nim' => $request->nim,
-                'prodi' => $request->prodi,
-                'role' => 'mahasiswa',
-                'email' => $request->nim . '@mahasiswa.com',
-                'password' => Hash::make($request->nim),
-            ]);
-        }
+    return redirect()->route('login')
+        ->with('success', 'Registrasi berhasil! Silakan tunggu verifikasi dari dosen.');
+}
 
-        Auth::login($user);
+// UPDATE fungsi login mahasiswa
+public function loginMahasiswa(Request $request)
+{
+    $request->validate([
+        'nim' => 'required',
+        'password' => 'required',
+    ]);
+
+    $user = User::where('nim', $request->nim)->first();
+
+    if (!$user) {
+        return back()->with('error', 'NIM tidak terdaftar!');
+    }
+
+    // Cek status verifikasi
+    if ($user->status_verifikasi === 'pending') {
+        return back()->with('error', 'Akun Anda masih menunggu verifikasi dosen!');
+    }
+
+    if ($user->status_verifikasi === 'ditolak') {
+        return back()->with('error', 'Akun Anda ditolak! Hubungi admin.');
+    }
+
+    // Coba login
+    if (Auth::attempt(['nim' => $request->nim, 'password' => $request->password])) {
         return redirect()->route('dashboard');
     }
 
-    public function loginDosen(Request $request)
-    {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            return redirect()->route('dashboard');
-        }
-
-        return back()->with('error', 'Username atau password salah!');
-    }
+    return back()->with('error', 'Password salah!');
+}
 
     public function logout()
     {
