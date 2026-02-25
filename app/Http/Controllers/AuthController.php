@@ -14,13 +14,14 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-   // Fungsi register mahasiswa
+// Fungsi register mahasiswa
 public function registerMahasiswa(Request $request)
 {
     $request->validate([
         'nim' => 'required|unique:users',
         'name' => 'required',
         'email' => 'required|email|unique:users',
+        'password' => 'required|min:6|confirmed', // VALIDASI PASSWORD
         'prodi' => 'required',
     ]);
 
@@ -31,7 +32,7 @@ public function registerMahasiswa(Request $request)
         'email' => $request->email,
         'prodi' => $request->prodi,
         'role' => 'mahasiswa',
-        'password' => Hash::make($request->nim), // password default = NIM
+        'password' => Hash::make($request->password), // PAKAI PASSWORD DARI FORM
         'status_verifikasi' => 'pending',
     ]);
 
@@ -39,18 +40,24 @@ public function registerMahasiswa(Request $request)
         ->with('success', 'Registrasi berhasil! Silakan tunggu verifikasi dari dosen.');
 }
 
-// UPDATE fungsi login mahasiswa
+// Proses login mahasiswa
 public function loginMahasiswa(Request $request)
 {
     $request->validate([
-        'nim' => 'required',
-        'password' => 'required',
+        'login' => 'required',
+        'password' => 'required', // PASSWORD TETAP DIPERIKSA
     ]);
 
-    $user = User::where('nim', $request->nim)->first();
+    // Coba cari user berdasarkan NIM
+    $user = User::where('nim', $request->login)->first();
+    
+    // Kalau tidak ketemu, coba cari berdasarkan email
+    if (!$user) {
+        $user = User::where('email', $request->login)->first();
+    }
 
     if (!$user) {
-        return back()->with('error', 'NIM tidak terdaftar!');
+        return back()->with('error', 'NIM/Email tidak terdaftar!');
     }
 
     // Cek status verifikasi
@@ -62,8 +69,9 @@ public function loginMahasiswa(Request $request)
         return back()->with('error', 'Akun Anda ditolak! Hubungi admin.');
     }
 
-    // Coba login
-    if (Auth::attempt(['nim' => $request->nim, 'password' => $request->password])) {
+    // Coba login dengan password
+    if (Auth::attempt(['nim' => $request->login, 'password' => $request->password]) || 
+        Auth::attempt(['email' => $request->login, 'password' => $request->password])) {
         return redirect()->route('dashboard');
     }
 
