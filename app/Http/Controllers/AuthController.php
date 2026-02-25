@@ -21,7 +21,7 @@ public function registerMahasiswa(Request $request)
         'nim' => 'required|unique:users',
         'name' => 'required',
         'email' => 'required|email|unique:users',
-        'password' => 'required|min:6|confirmed', 
+        'password' => 'required|min:6|confirmed', // VALIDASI PASSWORD
         'prodi' => 'required',
     ]);
 
@@ -32,7 +32,7 @@ public function registerMahasiswa(Request $request)
         'email' => $request->email,
         'prodi' => $request->prodi,
         'role' => 'mahasiswa',
-        'password' => Hash::make($request->password), 
+        'password' => Hash::make($request->password), // PAKAI PASSWORD DARI FORM
         'status_verifikasi' => 'pending',
     ]);
 
@@ -44,18 +44,20 @@ public function registerMahasiswa(Request $request)
 public function loginMahasiswa(Request $request)
 {
     $request->validate([
-        'nim' => 'required',
-        'email' => 'required|email',
-        'password' => 'required',
+        'login' => 'required',
+        'password' => 'required', // PASSWORD TETAP DIPERIKSA
     ]);
 
-    // Cari user berdasarkan NIM dan Email
-    $user = User::where('nim', $request->nim)
-                ->where('email', $request->email)
-                ->first();
+    // Coba cari user berdasarkan NIM
+    $user = User::where('nim', $request->login)->first();
+    
+    // Kalau tidak ketemu, coba cari berdasarkan email
+    if (!$user) {
+        $user = User::where('email', $request->login)->first();
+    }
 
     if (!$user) {
-        return back()->with('error', 'NIM dan Email tidak cocok!');
+        return back()->with('error', 'NIM/Email tidak terdaftar!');
     }
 
     // Cek status verifikasi
@@ -63,8 +65,13 @@ public function loginMahasiswa(Request $request)
         return back()->with('error', 'Akun Anda masih menunggu verifikasi dosen!');
     }
 
-    // Coba login
-    if (Auth::attempt(['nim' => $request->nim, 'password' => $request->password])) {
+    if ($user->status_verifikasi === 'ditolak') {
+        return back()->with('error', 'Akun Anda ditolak! Hubungi admin.');
+    }
+
+    // Coba login dengan password
+    if (Auth::attempt(['nim' => $request->login, 'password' => $request->password]) || 
+        Auth::attempt(['email' => $request->login, 'password' => $request->password])) {
         return redirect()->route('dashboard');
     }
 
