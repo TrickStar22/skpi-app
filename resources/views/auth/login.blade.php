@@ -44,12 +44,12 @@
             @csrf
             <div class="form-group">
     <label>NIM / Email</label>
-    <input type="text" name="nim" class="form-control" placeholder="Masukkan NIM atau Email" required>
+    <input type="text" name="login" class="form-control" placeholder="Masukkan NIM atau Email" required>
 </div>
             <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" name="name" required>
-            </div>
+    <label>Password</label>
+    <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+</div>
             <div class="form-group">
                 <label>Program Studi</label>
                 <select name="prodi" required>
