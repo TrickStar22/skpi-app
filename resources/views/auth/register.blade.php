@@ -70,6 +70,12 @@
         text-decoration: none;
         font-weight: 600;
     }
+    
+    .password-hint {
+        font-size: 12px;
+        color: #6c757d;
+        margin-top: 5px;
+    }
 </style>
 
 <div class="register-container">
@@ -94,6 +100,19 @@
         <div class="form-group">
             <label>Email</label>
             <input type="email" name="email" class="form-control" placeholder="Masukkan email" required>
+        </div>
+        
+        {{-- TAMBAHKAN FIELD PASSWORD --}}
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+            <div class="password-hint">Minimal 6 karakter</div>
+        </div>
+        
+        {{-- TAMBAHKAN FIELD KONFIRMASI PASSWORD --}}
+        <div class="form-group">
+            <label>Konfirmasi Password</label>
+            <input type="password" name="password_confirmation" class="form-control" placeholder="Masukkan ulang password" required>
         </div>
         
         <div class="form-group">
