@@ -75,4 +75,21 @@ public function loginMahasiswa(Request $request)
         Auth::logout();
         return redirect()->route('login');
     }
+
+    // Proses login dosen
+    public function loginDosen(Request $request)
+    {
+    $request->validate([
+        'username' => 'required',
+        'password' => 'required',
+    ]);
+
+    // Coba login
+    if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        return redirect()->route('dashboard');
+    }
+
+    // Kalau gagal
+    return back()->with('error', 'Username atau password salah!');
+    }
 }
