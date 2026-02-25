@@ -43,9 +43,9 @@
         <form action="{{ route('login.mahasiswa') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label>NIM</label>
-                <input type="text" name="nim" required>
-            </div>
+    <label>NIM / Email</label>
+    <input type="text" name="nim" class="form-control" placeholder="Masukkan NIM atau Email" required>
+</div>
             <div class="form-group">
                 <label>Nama Lengkap</label>
                 <input type="text" name="name" required>
