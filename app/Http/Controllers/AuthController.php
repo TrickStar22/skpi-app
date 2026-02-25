@@ -39,18 +39,24 @@ public function registerMahasiswa(Request $request)
         ->with('success', 'Registrasi berhasil! Silakan tunggu verifikasi dari dosen.');
 }
 
-// UPDATE fungsi login mahasiswa
+// Proses login mahasiswa
 public function loginMahasiswa(Request $request)
 {
     $request->validate([
-        'nim' => 'required',
+        'login' => 'required',      // field ini bisa diisi NIM atau Email
         'password' => 'required',
     ]);
 
-    $user = User::where('nim', $request->nim)->first();
+    // Coba cari user berdasarkan NIM
+    $user = User::where('nim', $request->login)->first();
+    
+    // Kalau tidak ketemu, coba cari berdasarkan email
+    if (!$user) {
+        $user = User::where('email', $request->login)->first();
+    }
 
     if (!$user) {
-        return back()->with('error', 'NIM tidak terdaftar!');
+        return back()->with('error', 'NIM/Email tidak terdaftar!');
     }
 
     // Cek status verifikasi
@@ -62,8 +68,9 @@ public function loginMahasiswa(Request $request)
         return back()->with('error', 'Akun Anda ditolak! Hubungi admin.');
     }
 
-    // Coba login
-    if (Auth::attempt(['nim' => $request->nim, 'password' => $request->password])) {
+    // Coba login (coba dengan NIM dulu, kalau gagal coba dengan email)
+    if (Auth::attempt(['nim' => $request->login, 'password' => $request->password]) || 
+        Auth::attempt(['email' => $request->login, 'password' => $request->password])) {
         return redirect()->route('dashboard');
     }
 
