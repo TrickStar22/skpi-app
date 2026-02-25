@@ -14,13 +14,14 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-   // Fungsi register mahasiswa
+// Fungsi register mahasiswa
 public function registerMahasiswa(Request $request)
 {
     $request->validate([
         'nim' => 'required|unique:users',
         'name' => 'required',
         'email' => 'required|email|unique:users',
+        'password' => 'required|min:6|confirmed', 
         'prodi' => 'required',
     ]);
 
@@ -31,7 +32,7 @@ public function registerMahasiswa(Request $request)
         'email' => $request->email,
         'prodi' => $request->prodi,
         'role' => 'mahasiswa',
-        'password' => Hash::make($request->nim), // password default = NIM
+        'password' => Hash::make($request->password), 
         'status_verifikasi' => 'pending',
     ]);
 
@@ -43,14 +44,14 @@ public function registerMahasiswa(Request $request)
 public function loginMahasiswa(Request $request)
 {
     $request->validate([
-        'login' => 'required',      // field ini bisa diisi NIM atau Email
+        'login' => 'required',     
         'password' => 'required',
     ]);
 
-    // Coba cari user berdasarkan NIM
+  
     $user = User::where('nim', $request->login)->first();
     
-    // Kalau tidak ketemu, coba cari berdasarkan email
+    
     if (!$user) {
         $user = User::where('email', $request->login)->first();
     }
