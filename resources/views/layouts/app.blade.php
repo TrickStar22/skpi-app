@@ -117,6 +117,13 @@
         @endif
 
         @yield('content')
+        @auth
+    @if(Auth::user()->isDosen())
+    <div style="margin-bottom: 20px;">
+        <a href="{{ route('dosen.verifikasi') }}" class="btn" style="background: #ffc107; color: #333;">🔔 Verifikasi Mahasiswa</a>
+    </div>
+    @endif
+@endauth
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

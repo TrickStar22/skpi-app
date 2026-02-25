@@ -59,6 +59,10 @@
                     <option value="Manajemen">Manajemen</option>
                 </select>
             </div>
+            {{-- Tambahkan setelah form --}}
+<div style="text-align: center; margin-top: 20px;">
+    <p>Belum punya akun? <a href="{{ route('register') }}" style="color: #4a2c82; font-weight: 600;">Daftar di sini</a></p>
+</div>
             <button type="submit" class="btn-login">Login</button>
         </form>
     </div>
