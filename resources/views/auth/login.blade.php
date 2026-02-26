@@ -54,9 +54,9 @@
                 <label>Program Studi</label>
                 <select name="prodi" required>
                     <option value="">Pilih</option>
-                    <option value="Teknik Informatika">Teknik Informatika</option>
-                    <option value="Sistem Informasi">Sistem Informasi</option>
-                    <option value="Manajemen">Manajemen</option>
+                    <option value="Teknologi Informasi">Teknologi Informasi</option>
+                    <option value="Teknik Electronika">Teknik Electronika</option>
+                    <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
                     <option value="Akuntansi">Akuntansi</option>
                 </select>
             </div>
