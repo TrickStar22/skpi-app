@@ -39,27 +39,39 @@
         <div class="login-tab" onclick="switchTab('dosen')">Dosen</div>
     </div>
 
-    <div id="loginMahasiswa" class="login-form active">
-        <form action="{{ route('login.mahasiswa') }}" method="POST">
-            @csrf
-            <div class="form-group">
-    <label>NIM / Email</label>
-    <input type="text" name="login" class="form-control" placeholder="Masukkan NIM atau Email" required>
+    {{-- Form Login Mahasiswa --}}
+<div id="form-mahasiswa" class="login-form active">
+    <form action="{{ route('login.mahasiswa') }}" method="POST">
+        @csrf
+        <div class="form-group">
+            <label>NIM / Email</label>
+            <input type="text" name="login" class="form-control" 
+                   placeholder="Masukkan NIM atau Email" 
+                   value="{{ old('login') }}" required>
+        </div>
+        
+        {{-- TAMBAHKAN FIELD PROGRAM STUDI --}}
+        <div class="form-group">
+            <label>Program Studi</label>
+            <select name="prodi" class="form-control" required>
+                <option value="">Pilih Program Studi</option>
+                <option value="Akuntansi " {{ old('prodi') == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
+                <option value="Akuntansi Sektor Public" {{ old('prodi') == 'SAkuntansi Sektor Public' ? 'selected' : '' }}>Akuntansi Sektor Public</option>
+                <option value="Teknologi Informasi" {{ old('prodi') == 'Teknologi Informasi' ? 'selected' : '' }}>Teknologi Informasi</option>
+                <option value="Mekatronika" {{ old('prodi') == 'Mekatronika' ? 'selected' : '' }}>Mekatronika</option>
+                <option value="Electronika" {{ old('prodi') == 'Electronika' ? 'selected' : '' }}>Electronika</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" 
+                   placeholder="Masukkan password" required>
+        </div>
+        
+        <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
+    </form>
 </div>
-            <div class="form-group">
-    <label>Password</label>
-    <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
-</div>
-            <div class="form-group">
-                <label>Program Studi</label>
-                <select name="prodi" required>
-                    <option value="">Pilih</option>
-                    <option value="Teknologi Informasi">Teknologi Informasi</option>
-                    <option value="Teknik Electronika">Teknik Electronika</option>
-                    <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
-                    <option value="Akuntansi">Akuntansi</option>
-                </select>
-            </div>
             {{-- Tambahkan setelah form --}}
 <div style="text-align: center; margin-top: 20px;">
     <p>Belum punya akun? <a href="{{ route('register') }}" style="color: #4a2c82; font-weight: 600;">Daftar di sini</a></p>

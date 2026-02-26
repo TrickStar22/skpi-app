@@ -120,7 +120,8 @@
             <select name="prodi" class="form-control" required>
                 <option value="">Pilih Program Studi</option>
                 <option value="Teknologi Informasi">Teknologi Informasi</option>
-                <option value="Teknik Electronika">Teknik Electronika</option>
+                <option value="Mekatronika">Mekatronika</option>
+                <option value="Electronika">Electronika</option>
                 <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
                 <option value="Akuntansi">Akuntansi</option>
             </select>
