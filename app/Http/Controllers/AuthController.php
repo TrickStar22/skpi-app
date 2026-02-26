@@ -45,7 +45,8 @@ public function loginMahasiswa(Request $request)
 {
     $request->validate([
         'login' => 'required',
-        'password' => 'required', // PASSWORD TETAP DIPERIKSA
+        'password' => 'required',
+        'prodi' => 'required', // TAMBAHKAN VALIDASI PRODI
     ]);
 
     // Coba cari user berdasarkan NIM
@@ -57,16 +58,25 @@ public function loginMahasiswa(Request $request)
     }
 
     if (!$user) {
-        return back()->with('error', 'NIM/Email tidak terdaftar!');
+        return back()->with('error', 'NIM/Email tidak terdaftar!')
+            ->withInput();
+    }
+
+    // CEK PROGRAM STUDI HARUS SAMA
+    if ($user->prodi !== $request->prodi) {
+        return back()->with('error', 'Program studi tidak sesuai dengan saat registrasi!')
+            ->withInput();
     }
 
     // Cek status verifikasi
     if ($user->status_verifikasi === 'pending') {
-        return back()->with('error', 'Akun Anda masih menunggu verifikasi dosen!');
+        return back()->with('error', 'Akun Anda masih menunggu verifikasi dosen!')
+            ->withInput();
     }
 
     if ($user->status_verifikasi === 'ditolak') {
-        return back()->with('error', 'Akun Anda ditolak! Hubungi admin.');
+        return back()->with('error', 'Akun Anda ditolak! Hubungi admin.')
+            ->withInput();
     }
 
     // Coba login dengan password
@@ -75,7 +85,8 @@ public function loginMahasiswa(Request $request)
         return redirect()->route('dashboard');
     }
 
-    return back()->with('error', 'Password salah!');
+    return back()->with('error', 'Password salah!')
+        ->withInput();
 }
 
     public function logout()
