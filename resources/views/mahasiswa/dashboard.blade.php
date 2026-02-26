@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="form-container">
-    <h3 class="form-title"> Input Prestasi Baru</h3>
+    <h3 class="form-title">📝 Input Prestasi Baru</h3>
     <form action="{{ route('prestasi.store') }}" method="POST">
         @csrf
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">

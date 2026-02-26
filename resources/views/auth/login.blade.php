@@ -57,6 +57,7 @@
                     <option value="Teknik Informatika">Teknik Informatika</option>
                     <option value="Sistem Informasi">Sistem Informasi</option>
                     <option value="Manajemen">Manajemen</option>
+                    <option value="Akuntansi">Akuntansi</option>
                 </select>
             </div>
             {{-- Tambahkan setelah form --}}
