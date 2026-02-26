@@ -69,7 +69,7 @@
                    placeholder="Masukkan password" required>
         </div>
         
-        <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
+    
     </form>
 </div>
             {{-- Tambahkan setelah form --}}
@@ -92,7 +92,6 @@
                 <input type="password" name="password" required>
             </div>
             <button type="submit" class="btn-login">Login</button>
-            <p style="text-align: center; margin-top: 10px;">Demo: dosen / 123</p>
         </form>
     </div>
 </div>
