@@ -11,9 +11,9 @@ class DosenSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Dr. Budi Santoso, M.Kom',
+            'name' => 'Ramadhani, S.Kom.,M.T.',
             'username' => 'dosen',
-            'nidn' => '197001011998031001',
+            'nidn' => '1317048801',
             'role' => 'dosen',
             'email' => 'dosen@univ.ac.id',
             'password' => Hash::make('123'),
