@@ -157,13 +157,10 @@
                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
             <div class="text-right">
-                <a href="{{ route('lupa-password') }}">Lupa Password?</a>
+                <a href="{{ route('password.lupa') }}">Lupa Password?</a>
             </div>
             <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
         </form>
-        <div class="register-link">
-        <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
-    </div>
     </div>
     
     {{-- FORM DOSEN --}}
