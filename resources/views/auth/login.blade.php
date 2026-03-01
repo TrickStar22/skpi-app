@@ -118,12 +118,7 @@
         <button class="tab-btn" onclick="showTab('dosen')">👨‍🏫 Dosen</button>
     </div>
     
-    {{-- Form Login Mahasiswa --}}
-    {{-- Di bagian form mahasiswa --}}
-<div class="form-group">
-    <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
-</div>
-
+    
 {{-- TAMBAHKAN INI --}}
 <div class="text-right" style="text-align: right; margin-top: 10px;">
     <a href="{{ route('password.lupa') }}" style="color: #4a2c82; font-size: 14px;">Lupa Password?</a>
@@ -152,8 +147,11 @@
         </form>
     </div>
     
-    {{-- Form Login Dosen --}}
-    <div id="form-dosen" class="login-form">
+
+{{-- TAMBAHKAN INI --}}
+<div class="text-right" style="text-align: right; margin-top: 10px;">
+    <a href="{{ route('password.lupa') }}" style="color: #4a2c82; font-size: 14px;">Lupa Password?</a>
+</div>
         <form action="{{ route('login.dosen') }}" method="POST">
             @csrf
             <div class="form-group">
