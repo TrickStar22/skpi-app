@@ -19,7 +19,7 @@
     }
     
     .register-header h2 {
-        color: #4a2c82;
+        color: #261CC1;
         font-size: 28px;
         margin-bottom: 10px;
     }
@@ -51,7 +51,7 @@
     .btn-register {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #667eea 0%, #4a2c82 100%);
+        background: linear-gradient(135deg, #0992C2 0%, #261CC1 100%);
         color: white;
         border: none;
         border-radius: 10px;
@@ -66,7 +66,7 @@
     }
     
     .login-link a {
-        color: #4a2c82;
+        color: #261CC1;
         text-decoration: none;
         font-weight: 600;
     }
@@ -119,11 +119,11 @@
             <label>Program Studi</label>
             <select name="prodi" class="form-control" required>
                 <option value="">Pilih Program Studi</option>
+                <option value="Akuntansi">Akuntansi</option>
+                <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
                 <option value="Teknologi Informasi">Teknologi Informasi</option>
                 <option value="Mekatronika">Mekatronika</option>
-                <option value="Electronika">Electronika</option>
-                <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
-                <option value="Akuntansi">Akuntansi</option>
+                 <option value="Electronika">Electronika</option>
             </select>
         </div>
         

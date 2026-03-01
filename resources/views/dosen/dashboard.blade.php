@@ -6,7 +6,7 @@
 <style>
     .mahasiswa-card {
         background: white; border-radius: 10px; padding: 15px;
-        margin-bottom: 15px; border-left: 4px solid #764ba2;
+        margin-bottom: 15px; border-left: 4px solid #261CC1;
     }
     .modal {
         display: none; position: fixed; top: 0; left: 0;
@@ -25,10 +25,12 @@
     <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px;">
         <input type="text" id="search" placeholder="Cari nama/NIM..." onkeyup="filterMahasiswa()">
         <select id="prodi" onchange="filterMahasiswa()">
-            <option value="all">Semua Prodi</option>
-            <option value="Teknik Informatika">Teknik Informatika</option>
-            <option value="Sistem Informasi">Sistem Informasi</option>
-            <option value="Manajemen">Manajemen</option>
+            <option value="">Pilih Program Studi</option>
+                <option value="Akuntansi">Akuntansi</option>
+                <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
+                <option value="Teknologi Informasi">Teknologi Informasi</option>
+                <option value="Mekatronika">Mekatronika</option>
+                 <option value="Electronika">Electronika</option>
         </select>
         <button class="btn btn-primary" onclick="resetFilter()">Reset</button>
     </div>
@@ -43,7 +45,7 @@
                 <div>
                     <strong>{{ $m->name }}</strong> ({{ $m->nim }})
                 </div>
-                <span class="status-badge" style="background: #764ba2; color: white;">
+                <span class="status-badge" style="background: #261CC1; color: white;">
                     {{ $m->prestasis->count() }} Prestasi
                 </span>
             </div>
@@ -61,7 +63,7 @@
 <div id="detailModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3 style="color: #764ba2; margin-bottom: 20px;">Detail Prestasi Mahasiswa</h3>
+        <h3 style="color: #261CC1; margin-bottom: 20px;">Detail Prestasi Mahasiswa</h3>
         <div id="modalInfo" style="margin-bottom: 20px;"></div>
         <table style="width: 100%;">
             <thead>

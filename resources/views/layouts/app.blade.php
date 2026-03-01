@@ -9,7 +9,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0992C2 0%, #261CC1 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -28,7 +28,7 @@
         }
         .user-avatar {
             width: 50px; height: 50px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0992C2 0%, #261CC1 100%);
             border-radius: 50%; display: flex; align-items: center;
             justify-content: center; color: white; font-size: 24px;
             margin-right: 15px;
@@ -42,14 +42,14 @@
             padding: 10px 20px; border: none; border-radius: 5px;
             cursor: pointer; font-size: 1em;
         }
-        .btn-primary { background: #764ba2; color: white; }
+        .btn-primary { background: #261CC1; color: white; }
         .form-container {
             background: white; border-radius: 15px; padding: 30px;
             margin-bottom: 30px;
         }
         .form-title {
-            color: #764ba2; margin-bottom: 20px;
-            border-bottom: 2px solid #764ba2; padding-bottom: 10px;
+            color: #261CC1; margin-bottom: 20px;
+            border-bottom: 2px solid #261CC1; padding-bottom: 10px;
         }
         .form-group { margin-bottom: 15px; }
         .form-group label {
@@ -64,7 +64,7 @@
             overflow-x: auto;
         }
         table { width: 100%; border-collapse: collapse; }
-        th { background: #764ba2; color: white; padding: 12px; }
+        th { background: #261CC1; color: white; padding: 12px; }
         td { padding: 10px; border-bottom: 1px solid #ddd; }
         .status-badge {
             padding: 5px 10px; border-radius: 15px; font-size: 0.85em;
@@ -120,7 +120,7 @@
         @auth
     @if(Auth::user()->isDosen())
     <div style="margin-bottom: 20px;">
-        <a href="{{ route('dosen.verifikasi') }}" class="btn" style="background: #ffc107; color: #333;">🔔 Verifikasi Mahasiswa</a>
+        <a href="{{ route('dosen.verifikasi') }}" class="btn" style="background: #261CC1; color: #fff3cd;">🔔 Verifikasi Mahasiswa</a>
     </div>
     @endif
 @endauth
