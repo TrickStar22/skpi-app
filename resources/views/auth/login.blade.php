@@ -105,6 +105,22 @@
         text-decoration: none;
         font-weight: 600;
     }
+    
+    .text-right {
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .text-right a {
+        color: #261CC1;
+        font-size: 14px;
+        text-decoration: none;
+    }
+    
+    .text-right a:hover {
+        text-decoration: underline;
+    }
 </style>
 
 <div class="login-container">
@@ -118,9 +134,8 @@
         <button class="tab-btn" onclick="showTab('dosen')">👨‍🏫 Dosen</button>
     </div>
     
-    
-{{-- TAMBAHKAN INI --}}
-
+    {{-- FORM MAHASISWA --}}
+    <div id="form-mahasiswa" class="login-form active">
         <form action="{{ route('login.mahasiswa') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -130,26 +145,26 @@
             <div class="form-group">
                 <label>Program Studi</label>
                 <select name="prodi" class="form-control" required>
-                <option value="Akuntansi " {{ old('prodi') == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
-                <option value="Akuntansi Sektor Public" {{ old('prodi') == 'SAkuntansi Sektor Public' ? 'selected' : '' }}>Akuntansi Sektor Public</option>
-                <option value="Teknologi Informasi" {{ old('prodi') == 'Teknologi Informasi' ? 'selected' : '' }}>Teknologi Informasi</option>
-                <option value="Mekatronika" {{ old('prodi') == 'Mekatronika' ? 'selected' : '' }}>Mekatronika</option>
-                <option value="Electronika" {{ old('prodi') == 'Electronika' ? 'selected' : '' }}>Electronika</option>
+                    <option value="Akuntansi">Akuntansi</option>
+                    <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
+                    <option value="Teknologi Informasi">Teknologi Informasi</option>
+                    <option value="Mekatronika">Mekatronika</option>
+                    <option value="Electronika">Electronika</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
-            <div class="text-right" style="text-align: right; margin-top: 10px;">
-    <a href="{{ route('password.lupa') }}" style="color: #4a2c82; font-size: 14px;">Lupa Password?</a>
-</div>
+            <div class="text-right">
+                <a href="{{ route('password.lupa') }}">Lupa Password?</a>
+            </div>
             <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
         </form>
     </div>
     
-
-{{-- TAMBAHKAN INI --}}
+    {{-- FORM DOSEN --}}
+    <div id="form-dosen" class="login-form">
         <form action="{{ route('login.dosen') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -160,7 +175,9 @@
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
-        
+            <div class="text-right">
+                <a href="{{ route('password.lupa') }}">Lupa Password?</a>
+            </div>
             <button type="submit" class="btn-login">Login sebagai Dosen</button>
         </form>
     </div>
@@ -172,16 +189,20 @@
 
 <script>
 function showTab(role) {
+    // Hapus class active dari semua tab button
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     
+    // Sembunyikan semua form
     document.querySelectorAll('.login-form').forEach(form => {
         form.classList.remove('active');
     });
     
+    // Aktifkan tab yang diklik
     event.target.classList.add('active');
     
+    // Tampilkan form yang sesuai
     if (role == 'mahasiswa') {
         document.getElementById('form-mahasiswa').classList.add('active');
     } else {
