@@ -161,6 +161,9 @@
             </div>
             <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
         </form>
+        <div class="register-link">
+        <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
+    </div>
     </div>
     
     {{-- FORM DOSEN --}}
@@ -182,9 +185,6 @@
         </form>
     </div>
     
-    <div class="register-link">
-        <p>Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a></p>
-    </div>
 </div>
 
 <script>
