@@ -19,7 +19,7 @@
     }
     
     .login-header h2 {
-        color: #4a2c82;
+        color: #261CC1;
         font-size: 28px;
         margin-bottom: 10px;
     }
@@ -46,7 +46,7 @@
     }
     
     .tab-btn.active {
-        background: #4a2c82;
+        background: #261CC1;
         color: white;
         box-shadow: 0 4px 10px rgba(74, 44, 130, 0.3);
     }
@@ -79,14 +79,14 @@
     }
     
     .form-control:focus {
-        border-color: #4a2c82;
+        border-color: #261CC1;
         outline: none;
     }
     
     .btn-login {
         width: 100%;
         padding: 14px;
-        background: linear-gradient(135deg, #667eea 0%, #4a2c82 100%);
+        background: linear-gradient(135deg, #0992C2 0%, #261CC1 100%);
         color: white;
         border: none;
         border-radius: 10px;
@@ -101,7 +101,7 @@
     }
     
     .register-link a {
-        color: #4a2c82;
+        color: #261CC1;
         text-decoration: none;
         font-weight: 600;
     }
@@ -119,7 +119,15 @@
     </div>
     
     {{-- Form Login Mahasiswa --}}
-    <div id="form-mahasiswa" class="login-form active">
+    {{-- Di bagian form mahasiswa --}}
+<div class="form-group">
+    <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
+</div>
+
+{{-- TAMBAHKAN INI --}}
+<div class="text-right" style="text-align: right; margin-top: 10px;">
+    <a href="{{ route('password.lupa') }}" style="color: #4a2c82; font-size: 14px;">Lupa Password?</a>
+</div>
         <form action="{{ route('login.mahasiswa') }}" method="POST">
             @csrf
             <div class="form-group">
