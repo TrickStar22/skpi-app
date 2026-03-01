@@ -32,6 +32,11 @@ Route::prefix('password')->name('password.')->group(function () {
 
 // Halaman yang butuh login
 Route::middleware(['auth'])->group(function () {
+    
+    // Di dalam group middleware auth
+Route::get('/print-skpi', [PrestasiController::class, 'printSKPI'])->name('print.skpi');
+Route::get('/print-skpi/{nim}', [PrestasiController::class, 'printSKPI'])->name('print.skpi.dosen');
+
     // Dashboard
     Route::get('/dashboard', [PrestasiController::class, 'index'])->name('dashboard');
     
@@ -48,5 +53,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dosen/verifikasi', [VerifikasiMahasiswaController::class, 'index'])->name('dosen.verifikasi');
     Route::post('/dosen/setujui/{id}', [VerifikasiMahasiswaController::class, 'setujui'])->name('dosen.setujui');
     Route::post('/dosen/tolak/{id}', [VerifikasiMahasiswaController::class, 'tolak'])->name('dosen.tolak');
-    // ========== SAMPAI SINI ==========
 });
