@@ -22,6 +22,14 @@ Route::post('/login/dosen', [AuthController::class, 'loginDosen'])->name('login.
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+    // Route untuk lupa password (tidak perlu login)
+Route::prefix('password')->name('password.')->group(function () {
+    Route::get('/lupa', [PasswordController::class, 'showLupaPasswordForm'])->name('lupa');
+    Route::post('/cek-akun', [PasswordController::class, 'cekAkun'])->name('cek');
+    Route::get('/reset', [PasswordController::class, 'showResetPasswordForm'])->name('reset');
+    Route::post('/update', [PasswordController::class, 'updatePassword'])->name('update');
+});
+
 // Halaman yang butuh login
 Route::middleware(['auth'])->group(function () {
     // Dashboard
@@ -41,11 +49,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/dosen/setujui/{id}', [VerifikasiMahasiswaController::class, 'setujui'])->name('dosen.setujui');
     Route::post('/dosen/tolak/{id}', [VerifikasiMahasiswaController::class, 'tolak'])->name('dosen.tolak');
     // ========== SAMPAI SINI ==========
-    // Route untuk lupa password (tidak perlu login)
-Route::prefix('password')->name('password.')->group(function () {
-    Route::get('/lupa', [PasswordController::class, 'showLupaPasswordForm'])->name('lupa');
-    Route::post('/cek-akun', [PasswordController::class, 'cekAkun'])->name('cek');
-    Route::get('/reset', [PasswordController::class, 'showResetPasswordForm'])->name('reset');
-    Route::post('/update', [PasswordController::class, 'updatePassword'])->name('update');
-});
 });
