@@ -156,7 +156,7 @@
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
-            <div class="text-right">
+            <div class="lupa-password">
                 <a href="{{ route('password.lupa') }}">Lupa Password?</a>
             </div>
             <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
