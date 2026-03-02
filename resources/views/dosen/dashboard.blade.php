@@ -39,7 +39,7 @@
 <div class="table-container">
     <h3 class="form-title">👥 Daftar Mahasiswa</h3>
     <div id="mahasiswaList">
-        @foreach($mahasiswas as $m)
+        @foreach($mahasiswa as $m)
         <div class="mahasiswa-card" data-nim="{{ $m->nim }}" data-nama="{{ strtolower($m->name) }}" data-prodi="{{ $m->prodi }}">
             <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
                 <div>
