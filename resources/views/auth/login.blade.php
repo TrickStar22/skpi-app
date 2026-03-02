@@ -160,6 +160,9 @@
                 <a href="{{ route('password.lupa') }}">Lupa Password?</a>
             </div>
             <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
+            <div class="register-link">
+                <p>Belum punya akun? <a href="{{ route('register') }}">Daftar disini</a></p>
+            </div>
         </form>
     </div>
     
