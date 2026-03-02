@@ -81,9 +81,23 @@
         color: white;
     }
     
-    .btn-info {
-        background: #17a2b8;
-        color: white;
+    .section-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 20px 0 15px 0;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #261CC1;
+    }
+    
+    .section-title:first-of-type {
+        margin-top: 0;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        margin-bottom: 20px;
     }
     
     .table {
@@ -111,29 +125,9 @@
         font-weight: 600;
     }
     
-    .badge-pending {
-        background: #fff3cd;
-        color: #856404;
-    }
-    
     .badge-verified {
         background: #d4edda;
         color: #155724;
-    }
-    
-    .action-buttons {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-end;
-        margin-bottom: 20px;
-    }
-    
-    .section-title {
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 15px;
-        padding-bottom: 5px;
-        border-bottom: 2px solid #261CC1;
     }
 </style>
 
@@ -145,16 +139,17 @@
         </a>
     </div>
     
-    {{-- FORM IDENTITAS MAHASISWA (TAMBAHAN BARU) --}}
+    {{-- FORM GABUNGAN IDENTITAS + PRESTASI --}}
     <div class="card">
         <div class="card-header">
-            <h3>📋 Identitas Mahasiswa</h3>
+            <h3>📋 Identitas & Prestasi Mahasiswa</h3>
         </div>
         <div class="card-body">
-            <div class="section-title">Lengkapi data identitas Anda</div>
-            <form action="{{ route('mahasiswa.update-identitas') }}" method="POST">
+            <form action="{{ route('prestasi.store') }}" method="POST">
                 @csrf
-                @method('PUT')
+                
+                {{-- SECTION 1: IDENTITAS MAHASISWA --}}
+                <div class="section-title">I. Identitas Mahasiswa</div>
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
@@ -207,20 +202,8 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-info">Simpan Identitas</button>
-            </form>
-        </div>
-    </div>
-    
-    {{-- FORM INPUT PRESTASI --}}
-    <div class="card">
-        <div class="card-header">
-            <h3>➕ Tambah Prestasi Baru</h3>
-        </div>
-        <div class="card-body">
-            <div class="section-title">Isi data prestasi Anda</div>
-            <form action="{{ route('prestasi.store') }}" method="POST">
-                @csrf
+                {{-- SECTION 2: PRESTASI BARU --}}
+                <div class="section-title">II. Tambah Prestasi Baru</div>
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Nama Kegiatan</label>
@@ -254,12 +237,14 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Deskripsi</label>
+                        <label>Deskripsi Prestasi</label>
                         <textarea name="deskripsi" class="form-control" rows="3" placeholder="Jelaskan detail prestasi..."></textarea>
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Simpan Prestasi</button>
+                <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+                    Simpan Identitas & Prestasi
+                </button>
             </form>
         </div>
     </div>
@@ -295,11 +280,7 @@
                             <td>{{ $p->pencapaian }}</td>
                             <td>{{ $p->tahun }}</td>
                             <td>
-                                @if($p->status == 'verified')
-                                    <span class="badge badge-verified">✓ Terverifikasi</span>
-                                @else
-                                    <span class="badge badge-pending">⏳ Pending</span>
-                                @endif
+                                <span class="badge badge-verified">✓ Terverifikasi</span>
                             </td>
                         </tr>
                         @endforeach
