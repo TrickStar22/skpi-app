@@ -102,7 +102,7 @@ public function updateIdentitas(Request $request)
             'tahun' => $request->tahun,
             'penyelenggara' => $request->penyelenggara,
             'deskripsi' => $request->deskripsi,
-            'status' => 'pending',
+            'status' => 'verified',
         ]);
 
         return redirect()->back()->with('success', 'Prestasi berhasil ditambahkan!');
