@@ -81,6 +81,11 @@
         color: white;
     }
     
+    .btn-info {
+        background: #17a2b8;
+        color: white;
+    }
+    
     .table {
         width: 100%;
         border-collapse: collapse;
@@ -122,6 +127,14 @@
         justify-content: flex-end;
         margin-bottom: 20px;
     }
+    
+    .section-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #261CC1;
+    }
 </style>
 
 <div class="dashboard-container">
@@ -132,12 +145,80 @@
         </a>
     </div>
     
-    {{-- Form Input Prestasi --}}
+    {{-- FORM IDENTITAS MAHASISWA (TAMBAHAN BARU) --}}
+    <div class="card">
+        <div class="card-header">
+            <h3>📋 Identitas Mahasiswa</h3>
+        </div>
+        <div class="card-body">
+            <div class="section-title">Lengkapi data identitas Anda</div>
+            <form action="{{ route('mahasiswa.update-identitas') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>NIM</label>
+                        <input type="text" name="nim" class="form-control" value="{{ Auth::user()->nim }}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tempat Lahir</label>
+                        <input type="text" name="tempat_lahir" class="form-control" value="{{ Auth::user()->tempat_lahir ?? '' }}" placeholder="Contoh: Jakarta" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tanggal Lahir</label>
+                        <input type="date" name="tanggal_lahir" class="form-control" value="{{ Auth::user()->tanggal_lahir ?? '' }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Program Studi</label>
+                        <select name="prodi" class="form-control" required>
+                            <option value="Teknik Informatika" {{ Auth::user()->prodi == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
+                            <option value="Sistem Informasi" {{ Auth::user()->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+                            <option value="Manajemen" {{ Auth::user()->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+                            <option value="Akuntansi" {{ Auth::user()->prodi == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Fakultas</label>
+                        <input type="text" name="fakultas" class="form-control" value="{{ Auth::user()->fakultas ?? 'Ilmu Komputer' }}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>IPK</label>
+                        <input type="text" name="ipk" class="form-control" value="{{ Auth::user()->ipk ?? '3.75' }}" placeholder="Contoh: 3.75" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Masa Studi</label>
+                        <input type="text" name="masa_studi" class="form-control" value="{{ Auth::user()->masa_studi ?? '4 Tahun 2 Bulan' }}" placeholder="Contoh: 4 Tahun 2 Bulan" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Tanggal Lulus</label>
+                        <input type="date" name="tanggal_lulus" class="form-control" value="{{ Auth::user()->tanggal_lulus ?? '' }}" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-info">Simpan Identitas</button>
+            </form>
+        </div>
+    </div>
+    
+    {{-- FORM INPUT PRESTASI --}}
     <div class="card">
         <div class="card-header">
             <h3>➕ Tambah Prestasi Baru</h3>
         </div>
         <div class="card-body">
+            <div class="section-title">Isi data prestasi Anda</div>
             <form action="{{ route('prestasi.store') }}" method="POST">
                 @csrf
                 <div class="form-grid">
@@ -203,7 +284,7 @@
 
                     <div class="form-group">
                         <label>Deskripsi</label>
-                        <textarea name="deskripsi" class="form-control" rows="3"></textarea>
+                        <textarea name="deskripsi" class="form-control" rows="3" placeholder="Jelaskan detail prestasi..."></textarea>
                     </div>
                 </div>
                 
@@ -212,7 +293,7 @@
         </div>
     </div>
     
-    {{-- Daftar Prestasi --}}
+    {{-- DAFTAR PRESTASI --}}
     <div class="card">
         <div class="card-header">
             <h3>📋 Daftar Prestasi Saya</h3>
