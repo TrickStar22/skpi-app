@@ -32,6 +32,7 @@ Route::prefix('password')->name('password.')->group(function () {
 
 // Halaman yang butuh login
 Route::middleware(['auth'])->group(function () {
+    Route::put('/mahasiswa/identitas', [PrestasiController::class, 'updateIdentitas'])->name('mahasiswa.update-identitas');
     
     // Di dalam group middleware auth
 Route::get('/print-skpi', [PrestasiController::class, 'printSKPI'])->name('print.skpi');

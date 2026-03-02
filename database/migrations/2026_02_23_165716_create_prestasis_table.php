@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('prestasis', function (Blueprint $table) {
     $table->id();
-    $table->foreignId('user_id')->constrained()->onDelete('cascade');
-    $table->string('nama_kegiatan');
+    $table->foreignId('user_id')->constrained();
+    $table->string('nama_kegiatan');        // ← Nama kegiatan
     $table->enum('tingkat', ['Lokal', 'Regional', 'Nasional', 'Internasional']);
-    $table->string('pencapaian'); // Juara 1, Juara 2, dll
+    $table->string('pencapaian');            // ← Juara 1, Juara 2, dll
     $table->year('tahun');
     $table->string('penyelenggara');
-    $table->text('deskripsi')->nullable();
+    $table->text('deskripsi')->nullable();   // ← Deskripsi prestasi
     $table->enum('status', ['pending', 'verified'])->default('pending');
     $table->timestamps();
 });

@@ -137,20 +137,20 @@
         <p>(DIPLOMA SUPPLEMENT)</p>
     </div>
 
-    {{-- I. IDENTITAS MAHASISWA --}}
-    <div class="info-mahasiswa">
-        <h4>I. IDENTITAS MAHASISWA</h4>
-        <div class="info-grid">
-            <div>Nama Lengkap</div><div>:</div><div>{{ $user->name }}</div>
-            <div>Tempat, Tgl Lahir</div><div>:</div><div>Jakarta, 15 Mei 2003</div>
-            <div>NIM</div><div>:</div><div>{{ $user->nim }}</div>
-            <div>Program Studi</div><div>:</div><div>{{ $user->prodi }}</div>
-            <div>Fakultas</div><div>:</div><div>Ilmu Komputer</div>
-            <div>IPK</div><div>:</div><div>3.75 (Memuaskan)</div>
-            <div>Masa Studi</div><div>:</div><div>4 Tahun 2 Bulan</div>
-            <div>Tanggal Lulus</div><div>:</div><div>15 Februari 2026</div>
-        </div>
+    {{-- I. IDENTITAS MAHASISWA (OTOMATIS DARI DATABASE) --}}
+<div class="info-mahasiswa">
+    <h4>I. IDENTITAS MAHASISWA</h4>
+    <div class="info-grid">
+        <div>Nama Lengkap</div><div>:</div><div>{{ $user->name }}</div>
+        <div>Tempat, Tgl Lahir</div><div>:</div><div>{{ $user->tempat_lahir ?? 'Jakarta' }}, {{ $user->tanggal_lahir ? \Carbon\Carbon::parse($user->tanggal_lahir)->format('d F Y') : '15 Mei 2003' }}</div>
+        <div>NIM</div><div>:</div><div>{{ $user->nim }}</div>
+        <div>Program Studi</div><div>:</div><div>{{ $user->prodi }}</div>
+        <div>Fakultas</div><div>:</div><div>{{ $user->fakultas ?? 'Ilmu Komputer' }}</div>
+        <div>IPK</div><div>:</div><div>{{ $user->ipk ?? '3.75' }} (Memuaskan)</div>
+        <div>Masa Studi</div><div>:</div><div>{{ $user->masa_studi ?? '4 Tahun 2 Bulan' }}</div>
+        <div>Tanggal Lulus</div><div>:</div><div>{{ $user->tanggal_lulus ? \Carbon\Carbon::parse($user->tanggal_lulus)->format('d F Y') : '15 Februari 2026' }}</div>
     </div>
+</div>
 
     {{-- II. PRESTASI YANG DICAPAI --}}
     <div class="info-mahasiswa">

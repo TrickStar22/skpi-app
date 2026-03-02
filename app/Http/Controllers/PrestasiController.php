@@ -50,6 +50,38 @@ class PrestasiController extends Controller
         $pdf = Pdf::loadView('pdf.skpi', $data);
         return $pdf->download('SKPI_'.$user->name.'_'.$user->nim.'.pdf');
     }
+    
+    /**
+ * Update identitas mahasiswa
+ */
+public function updateIdentitas(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'tempat_lahir' => 'required',
+        'tanggal_lahir' => 'required|date',
+        'prodi' => 'required',
+        'fakultas' => 'required',
+        'ipk' => 'required',
+        'masa_studi' => 'required',
+        'tanggal_lulus' => 'required|date',
+    ]);
+
+    $user = Auth::user();
+    
+    $user->update([
+        'name' => $request->name,
+        'tempat_lahir' => $request->tempat_lahir,
+        'tanggal_lahir' => $request->tanggal_lahir,
+        'prodi' => $request->prodi,
+        'fakultas' => $request->fakultas,
+        'ipk' => $request->ipk,
+        'masa_studi' => $request->masa_studi,
+        'tanggal_lulus' => $request->tanggal_lulus,
+    ]);
+
+    return redirect()->back()->with('success', 'Identitas berhasil diperbarui!');
+}
 
     public function store(Request $request)
     {
