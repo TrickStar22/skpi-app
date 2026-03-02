@@ -121,7 +121,7 @@
     {{-- KOP SURAT --}}
     <div class="header">
         <h1>KEMENTERIAN PENDIDIKAN TINGGI</h1>
-        <h2>UNIVERSITAS CONTOH NEGERI</h2>
+        <h2>UNIVERSITAS POLITEKNIK ACEH</h2>
         <p>Jl. Pendidikan Nasional No. 1, Jakarta Pusat 12345</p>
         <p>Telp. (021) 1234567 | Email: info@univ.ac.id</p>
     </div>

@@ -154,6 +154,15 @@
                             <option value="Regional">Regional</option>
                             <option value="Nasional">Nasional</option>
                             <option value="Internasional">Internasional</option>
+                            <option value="Gelar">Gelar</option>
+                            <option value="Praktek Program Industri">Praktek Program Industri</option>
+                            <option value="Judul Proyek Akhir">Judul Proyek Akhir</option>
+                            <option value="Jumlah SKS">Jumlah SKS</option>
+                            <option value="Nilai TOFEL Prediksi">Nilai TOFEL Prediksir</option>
+                            <option value="Nilai NKK">Nilai NKK</option>
+                            <option value="IPK">IPK</option>
+                            <option value="Judul Proyek Akhir">Judul Proyek Akhir</option>
+                            <option value="Judul Proyek Akhir">Judul Proyek Akhir</option>
                         </select>
                     </div>
                     
@@ -172,6 +181,26 @@
                         <input type="text" name="penyelenggara" class="form-control" required>
                     </div>
                     
+                    <div class="form-group">
+                        <label>Gelar</label>
+                        <input type="text" name="Gelar" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Praktek Program Industri</label>
+                        <input type="text" name="Praktek Program Industri" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Judul Proyek Akhir</label>
+                        <input type="text" name="Judul Proyek Akhir" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jumlah SKS</label>
+                        <input type="text" name="Jumlah SKS" class="form-control" required>
+                    </div>
+
                     <div class="form-group">
                         <label>Deskripsi</label>
                         <textarea name="deskripsi" class="form-control" rows="3"></textarea>
