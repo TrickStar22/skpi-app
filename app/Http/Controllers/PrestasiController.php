@@ -10,6 +10,24 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class PrestasiController extends Controller
 {
+    public function index()
+{
+    $user = Auth::user();
+
+    if ($user->isDosen()) {
+        // Untuk dosen: ambil semua mahasiswa
+        $mahasiswas = User::where('role', 'mahasiswa')
+            ->with('prestasis')
+            ->get();
+        return view('dosen.dashboard', compact('mahasiswas'));
+    } else {
+        // Untuk mahasiswa: ambil prestasi sendiri
+        $prestasis = $user->prestasis()
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return view('mahasiswa.dashboard', compact('prestasis'));
+    }
+}
 public function printSKPI($nim = null)
 {
     if ($nim) {
