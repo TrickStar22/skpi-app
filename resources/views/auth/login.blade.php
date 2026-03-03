@@ -121,6 +121,19 @@
     .text-right a:hover {
         text-decoration: underline;
     }
+
+    .g-recaptcha {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
 </style>
 
 <div class="login-container">
@@ -159,6 +172,13 @@
             <div class="text-right">
                 <a href="{{ route('password.lupa') }}">Lupa Password?</a>
             </div>
+            {{-- TAMBAHKAN CAPTCHA --}}
+    <div class="form-group">
+        {!! NoCaptcha::display() !!}
+        @error('g-recaptcha-response')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
             <button type="submit" class="btn-login">Login sebagai Mahasiswa</button>
             <div class="register-link">
                 <p>Belum punya akun? <a href="{{ route('register') }}">Daftar disini</a></p>
@@ -178,6 +198,13 @@
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
+             {{-- TAMBAHKAN CAPTCHA --}}
+    <div class="form-group">
+        {!! NoCaptcha::display() !!}
+        @error('g-recaptcha-response')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
             <button type="submit" class="btn-login">Login sebagai Dosen</button>
         </form>
     </div>
