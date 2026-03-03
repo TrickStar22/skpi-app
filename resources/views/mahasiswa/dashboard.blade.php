@@ -153,49 +153,51 @@
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Nama Lengkap</label>
+                        <p><em>Full Name</em></p>
                         <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" required>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label>NIM</label>
-                        <input type="text" name="nim" class="form-control" value="{{ Auth::user()->nim }}" readonly>
+                        <label>Jenis Kelamin</label>
+                        <p><em>Gender</em></p>
+                        <input type="text" name="Jenis Kelamin" class="form-control" value="{{ Auth::user()->name }}" required>
                     </div>
                     
                     <div class="form-group">
+                        <label>Nomor Induk Mahasiswa</label>
+                        <p><em>Student Number</em></p>
+                        <input type="text" name="Nomor Induk Mahasiswa" class="form-control" value="{{ Auth::user()->nim }}" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nomor ljazah Nasional</label>
+                        <p><em>National Diploma Number</em></p>
+                        <input type="text" name="nik" class="form-control" value="{{ Auth::user()->nin }}" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gelar</label>
+                        <p><em>Name of Diploma</em><p>
+                        <input type="text" name="Gelar" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
                         <label>Tempat Lahir</label>
+                        <p><em>place of birth</em><p>
                         <input type="text" name="tempat_lahir" class="form-control" value="{{ Auth::user()->tempat_lahir ?? '' }}" placeholder="Contoh: Jakarta" required>
                     </div>
                     
                     <div class="form-group">
                         <label>Tanggal Lahir</label>
+                        <p><em>place of birth</em><p>
                         <input type="date" name="tanggal_lahir" class="form-control" value="{{ Auth::user()->tanggal_lahir ?? '' }}" required>
                     </div>
-                    
+                                            
                     <div class="form-group">
-                        <label>Program Studi</label>
-                        <select name="prodi" class="form-control" required>
-                            <option value="Teknik Informatika" {{ Auth::user()->prodi == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
-                            <option value="Sistem Informasi" {{ Auth::user()->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
-                            <option value="Manajemen" {{ Auth::user()->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
-                            <option value="Akuntansi" {{ Auth::user()->prodi == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
-                        </select>
+                        <label>Tanggal Masuk</label>
+                        <input type="date" name="tanggal_masuk" class="form-control" value="{{ Auth::user()->tanggal_masuk ?? '' }}" required>
                     </div>
-                    
-                    <div class="form-group">
-                        <label>Fakultas</label>
-                        <input type="text" name="fakultas" class="form-control" value="{{ Auth::user()->fakultas ?? 'Ilmu Komputer' }}" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>IPK</label>
-                        <input type="text" name="ipk" class="form-control" value="{{ Auth::user()->ipk ?? '3.75' }}" placeholder="Contoh: 3.75" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Masa Studi</label>
-                        <input type="text" name="masa_studi" class="form-control" value="{{ Auth::user()->masa_studi ?? '4 Tahun 2 Bulan' }}" placeholder="Contoh: 4 Tahun 2 Bulan" required>
-                    </div>
-                    
+
                     <div class="form-group">
                         <label>Tanggal Lulus</label>
                         <input type="date" name="tanggal_lulus" class="form-control" value="{{ Auth::user()->tanggal_lulus ?? '' }}" required>
@@ -218,15 +220,7 @@
                             <option value="Regional">Regional</option>
                             <option value="Nasional">Nasional</option>
                             <option value="Internasional">Internasional</option>
-                            <option value="Gelar">Gelar</option>
-                            <option value="Praktek Program Industri">Praktek Program Industri</option>
-                            <option value="Judul Proyek Akhir">Judul Proyek Akhir</option>
-                            <option value="Jumlah SKS">Jumlah SKS</option>
-                            <option value="Nilai TOFEL Prediksi">Nilai TOFEL Prediksir</option>
-                            <option value="Nilai NKK">Nilai NKK</option>
-                            <option value="IPK">IPK</option>
-                            <option value="Judul Proyek Akhir">Judul Proyek Akhir</option>
-                            <option value="Judul Proyek Akhir">Judul Proyek Akhir</option>
+
                         </select>
                     </div>
                     
@@ -246,24 +240,135 @@
                     </div>
                     
                     <div class="form-group">
-<<<<<<< HEAD
-                        <label>Gelar</label>
-                        <input type="text" name="Gelar" class="form-control" required>
+                        <label>Program Studi</label>
+                        <p><em>Study Stream</em></p>
+                        <select name="prodi" class="form-control" required>
+                            <option value="Akuntansi" {{ Auth::user()->prodi == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
+                            <option value="Akuntansi Sektor Publik" {{ Auth::user()->prodi == 'Akuntansi Sektor Publik' ? 'selected' : '' }}>Akuntansi Sektor Publik</option>
+                            <option value="Teknologi Informasi" {{ Auth::user()->prodi == 'Teknologi Informasi' ? 'selected' : '' }}>Teknologi Informasi</option>
+                            <option value="Mekatronika" {{ Auth::user()->prodi == 'Mekatronika' ? 'selected' : '' }}>Mekatronika</option>
+                            <option value="Electronika" {{ Auth::user()->prodi == 'Electronika' ? 'selected' : '' }}>Electronika</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
-                        <label>Praktek Program Industri</label>
+                        <label>Nilai TOEFL Prediksi</label>
+                        <p><em>Prediction TOEFL Score</em></p>
+                        <input type="text" name="Nilai TOFEL Prediksi" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>IPK</label>
+                        <p><em>GPA</em></p>
+                        <input type="text" name="IPK" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nilai NKK</label>
+                        <p><em>Student Behavioral Score</em></p>
+                        <input type="text" name="Nilai NKK" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Program Praktik Industri</label>
+                        <p><em>Industrial Practice Program</em></p>
                         <input type="text" name="Praktek Program Industri" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Judul Proyek Akhir</label>
+                        <p><em>Final Project Title</em></p>
                         <input type="text" name="Judul Proyek Akhir" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Jumlah SKS</label>
+                        <p><em>Credits Cumulative</em></p>
                         <input type="text" name="Jumlah SKS" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jenis Pendidikan</label>
+                        <p><em>Type of Education</em></p>
+                        <input type="text" name="Jenis Pendidikan" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nama Perguruan Tinggi</label>
+                        <p><em>College Name</em></p>
+                        <input type="text" name="Nama Perguruan Tinggi" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SK Pendirian Perguruan Tinggi</label>
+                        <p><em>College Licence</em></p>
+                        <input type="text" name="SK Pendirian Perguruan Tinggi" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Akreditasi Perguruan Tinggi</label>
+                        <p><em>College Accreditation</em></p>
+                        <input type="text" name="Akreditasi Perguruan Tinggi" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jenjang Pendidikan</label>
+                        <p><em>Level of Study</em></p>
+                        <input type="text" name="Jenjang Pendidikan" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>SK Pendirian Program Studi</label>
+                        <p><em>Study Stream Licence</em></p>
+                        <input type="text" name="SK Pendirian Program Studi" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Akreditasi Program Studi</label>
+                        <p><em>Study Program Accreditation</em></p>
+                        <input type="text" name="Akreditasi Program Studi" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jenjang Kualifikasi KKNI</label>
+                        <p><em>INQF Qualification Level</em></p>
+                        <input type="text" name="Jenjang Kualifikasi KKNI" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Persyaratan Masuk</label>
+                        <p><em>Entry Requirement</em></p>
+                        <input type="text" name="Persyaratan Masuk" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bahasa Pengantar</label>
+                        <p><em>Language of Instruction</em></p>
+                        <input type="text" name="Bahasa Pengantar" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Lama Study Reguler</label>
+                        <p><em>Length of Reguler Study</em></p>
+                        <input type="text" name="Lama Study Reguler" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sistem Penilaian</label>
+                        <p><em>Grading System</em></p>
+                        <input type="text" name="Sistem Penilaian" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skala IPK Lulusan</label>
+                        <p><em>GPA Scale for Graduate</em></p>
+                        <input type="text" name="Skala IPK Lulusan" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pendidikan Lanjutan</label>
+                        <p><em>Further Study</em></p>
+                        <input type="text" name="Pendidikan Lanjutan" class="form-control" required>
                     </div>
 
                     <div class="form-group">
