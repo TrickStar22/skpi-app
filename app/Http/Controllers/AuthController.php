@@ -46,7 +46,8 @@ public function loginMahasiswa(Request $request)
     $request->validate([
         'login' => 'required',
         'password' => 'required',
-        'prodi' => 'required', // TAMBAHKAN VALIDASI PRODI
+        'prodi' => 'required', 
+        'g-recaptcha-response' => 'required|captcha', 
     ]);
 
     // Coba cari user berdasarkan NIM
@@ -101,6 +102,7 @@ public function loginMahasiswa(Request $request)
     $request->validate([
         'username' => 'required',
         'password' => 'required',
+        'g-recaptcha-response' => 'required|captcha',
     ]);
 
     // Coba login
