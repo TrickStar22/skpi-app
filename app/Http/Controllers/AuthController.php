@@ -47,8 +47,10 @@ public function loginMahasiswa(Request $request)
         'login' => 'required',
         'password' => 'required',
         'prodi' => 'required', 
-        'g-recaptcha-response' => 'required|captcha', 
+        //'g-recaptcha-response' => 'required|captcha', //
     ]);
+
+    
 
     // Coba cari user berdasarkan NIM
     $user = User::where('nim', $request->login)->first();
@@ -102,7 +104,7 @@ public function loginMahasiswa(Request $request)
     $request->validate([
         'username' => 'required',
         'password' => 'required',
-        'g-recaptcha-response' => 'required|captcha',
+        //'g-recaptcha-response' => 'required|captcha',//
     ]);
 
     // Coba login

@@ -174,7 +174,11 @@
             </div>
             {{-- TAMBAHKAN CAPTCHA --}}
     <div class="form-group">
-        {!! NoCaptcha::display() !!}
+        <label>Verifikasi Keamanan</label>
+    <div style="margin: 10px 0;">
+        <!-- PAKAI SITE KEY LANGSUNG DARI .ENV -->
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+    </div>
         @error('g-recaptcha-response')
             <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -200,11 +204,15 @@
             </div>
              {{-- TAMBAHKAN CAPTCHA --}}
     <div class="form-group">
-        {!! NoCaptcha::display() !!}
+        <label>Verifikasi Keamanan</label>
+    {{--<div style="margin: 10px 0;">
+        <!-- PAKAI SITE KEY LANGSUNG DARI .ENV -->
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+    </div>
         @error('g-recaptcha-response')
             <span class="text-danger">{{ $message }}</span>
         @enderror
-    </div>
+    </div> --}}
             <button type="submit" class="btn-login">Login sebagai Dosen</button>
         </form>
     </div>
@@ -234,4 +242,5 @@ function showTab(role) {
     }
 }
 </script>
+{{--}<script src="https://www.google.com/recaptcha/api.js" async defer></script>--}}
 @endsection
