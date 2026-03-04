@@ -3,13 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PrestasiController;
-use App\Http\Controllers\VerifikasiMahasiswaController; // TAMBAHKAN INI (baris baru)
+use App\Http\Controllers\VerifikasiMahasiswaController;
 use App\Http\Controllers\PasswordController; 
 
 // Halaman utama (login)
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
 
-// Route register (TAMBAHKAN INI)
+// Route register
 Route::get('/register', function() {
     return view('auth.register');
 })->name('register');
@@ -22,7 +22,7 @@ Route::post('/login/dosen', [AuthController::class, 'loginDosen'])->name('login.
 // Logout
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Route untuk lupa password (tidak perlu login)
+// Route untuk lupa password (tidak perlu login)
 Route::prefix('password')->name('password.')->group(function () {
     Route::get('/lupa', [PasswordController::class, 'showLupaPasswordForm'])->name('lupa');
     Route::post('/cek-akun', [PasswordController::class, 'cekAkun'])->name('cek');
@@ -32,14 +32,15 @@ Route::prefix('password')->name('password.')->group(function () {
 
 // Halaman yang butuh login
 Route::middleware(['auth'])->group(function () {
-    Route::post('/mahasiswa/update-lengkap', [PrestasiController::class, 'updateLengkap'])->name('mahasiswa.update-lengkap');
-    
-    // Di dalam group middleware auth
-Route::get('/print-skpi', [PrestasiController::class, 'printSKPI'])->name('print.skpi');
-Route::get('/print-skpi/{nim}', [PrestasiController::class, 'printSKPI'])->name('print.skpi.dosen');
-
     // Dashboard
     Route::get('/dashboard', [PrestasiController::class, 'index'])->name('dashboard');
+    
+    // Update identitas mahasiswa (BARU)
+    Route::post('/mahasiswa/update-identitas-lengkap', [PrestasiController::class, 'updateIdentitasLengkap'])->name('mahasiswa.update-identitas-lengkap');
+    
+    // Print SKPI
+    Route::get('/print-skpi', [PrestasiController::class, 'printSKPI'])->name('print.skpi');
+    Route::get('/print-skpi/{nim}', [PrestasiController::class, 'printSKPI'])->name('print.skpi.dosen');
     
     // Prestasi
     Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
@@ -49,8 +50,7 @@ Route::get('/print-skpi/{nim}', [PrestasiController::class, 'printSKPI'])->name(
     // Detail mahasiswa (untuk dosen)
     Route::get('/dosen/prestasi/{nim}', [PrestasiController::class, 'detailMahasiswa'])->name('dosen.prestasi');
     
-    // ========== TAMBAHKAN INI ==========
-    // Route verifikasi (khusus dosen)
+    // Verifikasi akun mahasiswa (khusus dosen)
     Route::get('/dosen/verifikasi', [VerifikasiMahasiswaController::class, 'index'])->name('dosen.verifikasi');
     Route::post('/dosen/setujui/{id}', [VerifikasiMahasiswaController::class, 'setujui'])->name('dosen.setujui');
     Route::post('/dosen/tolak/{id}', [VerifikasiMahasiswaController::class, 'tolak'])->name('dosen.tolak');
