@@ -9,28 +9,34 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prestasis', function (Blueprint $table) {
-    $table->string('Praktek Program Industri');        // ← Nama kegiatan
-    $table->string('Judul Proyek Akhir'); 
-    $table->string('Nilai TOFEL Prediksi');  
-    $table->string('Jumlah SKS');  
-    $table->string('Nilai NKK');   
-    $table->string('IPK');   
-    $table->string('Jenis Pendidikan');  
-    $table->string('Nama Perguruan Tinggi');  
-    $table->string('SK Pendirian Perguruan Tinggi');  
-    $table->string('Akreditasi Perguruan Tinggi');  
-    $table->string('Jenjang Pendidikan');  
-    $table->enum('prodi', ['Akuntansi', 'Akuntansi Sektor Publik', 'Teknologi Informasi', 'Mekatronika', 'Electronika']);
-    $table->string('SK Pendirian Program Studi'); 
-    $table->string('Akreditasi Program Studi'); 
-    $table->string('Jenjang Kualifikasi KKNI'); 
-    $table->string('Persyaratan Masuk'); 
-    $table->string('Bahasa Pengantar'); 
-    $table->string('Lama Study Reguler');
-    $table->string('Sistem Penilaian');
-    $table->string('Skala IPK Lulusan');
-    $table->string('Pendidikan Lanjutan');
-});
+            $table->id();  // ← WAJIB: Primary Key
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');  // ← WAJIB: Relasi ke users
+            
+            // Field-field yang Anda inginkan
+            $table->string('praktek_program_industri')->nullable();
+            $table->string('judul_proyek_akhir')->nullable();
+            $table->string('nilai_tofel_prediksi')->nullable();
+            $table->string('jumlah_sks')->nullable();
+            $table->string('nilai_nkk')->nullable();
+            $table->string('ipk')->nullable();
+            $table->string('jenis_pendidikan')->nullable();
+            $table->string('nama_perguruan_tinggi')->nullable();
+            $table->string('sk_pendirian_perguruan_tinggi')->nullable();
+            $table->string('akreditasi_perguruan_tinggi')->nullable();
+            $table->string('jenjang_pendidikan')->nullable();
+            $table->enum('prodi', ['Akuntansi', 'Akuntansi Sektor Publik', 'Teknologi Informasi', 'Mekatronika', 'Electronika'])->nullable();
+            $table->string('sk_pendirian_program_studi')->nullable();
+            $table->string('akreditasi_program_studi')->nullable();
+            $table->string('jenjang_kualifikasi_kkni')->nullable();
+            $table->string('persyaratan_masuk')->nullable();
+            $table->string('bahasa_pengantar')->nullable();
+            $table->string('lama_study_reguler')->nullable();
+            $table->string('sistem_penilaian')->nullable();
+            $table->string('skala_ipk_lulusan')->nullable();
+            $table->string('pendidikan_lanjutan')->nullable();
+            
+            $table->timestamps();  // ← WAJIB: created_at & updated_at
+        });
     }
 
     public function down()

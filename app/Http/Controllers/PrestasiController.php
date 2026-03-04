@@ -77,16 +77,31 @@ public function store(Request $request)
     ]);
 
     try {
-        $prestasi = Prestasi::create([
-            'user_id' => Auth::id(),
-            'kegiatan' => $request->nama_kegiatan,
-            'tingkat' => $request->tingkat,
-            'pencapaian' => $request->pencapaian,
-            'tahun' => $request->tahun,
-            'penyelenggara' => $request->penyelenggara,
-            'deskripsi' => $request->deskripsi,
-            'status' => 'verified',
-        ]);
+        Prestasi::create([
+    'user_id' => Auth::id(),
+    'praktek_program_industri' => $request->praktek_program_industri,
+    'judul_proyek_akhir' => $request->judul_proyek_akhir,
+    'nilai_tofel_prediksi' => $request->nilai_tofel_prediksi,
+    'jumlah_sks' => $request->jumlah_sks,
+    'nilai_nkk' => $request->nilai_nkk,
+    'ipk' => $request->ipk,
+    'jenis_pendidikan' => $request->jenis_pendidikan,
+    'nama_perguruan_tinggi' => $request->nama_perguruan_tinggi,
+    'sk_pendirian_pt' => $request->sk_pendirian_pt,
+    'akreditasi_pt' => $request->akreditasi_pt,
+    'jenjang_pendidikan' => $request->jenjang_pendidikan,
+    'prodi' => $request->prodi,
+    'sk_pendirian_prodi' => $request->sk_pendirian_prodi,
+    'akreditasi_prodi' => $request->akreditasi_prodi,
+    'jenjang_kualifikasi_kkni' => $request->jenjang_kualifikasi_kkni,
+    'persyaratan_masuk' => $request->persyaratan_masuk,
+    'bahasa_pengantar' => $request->bahasa_pengantar,
+    'lama_studi_reguler' => $request->lama_studi_reguler,
+    'sistem_penilaian' => $request->sistem_penilaian,
+    'skala_ipk_lulusan' => $request->skala_ipk_lulusan,
+    'pendidikan_lanjutan' => $request->pendidikan_lanjutan,
+    'status' => 'verified',
+]);
         
         return redirect()->back()->with('success', 'Prestasi berhasil ditambahkan!');
         

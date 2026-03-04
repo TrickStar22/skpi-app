@@ -12,16 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('name')->nullable();
-            $table->enum('Jenis Kelamin', ['laki-laki', 'perempuan']);
-            $table->string('Ninomor ljazah Nasional')->nullable();
-            $table->string('Gelar')->nullable();
-            $table->string('tempat_lahir')->nullable()->after('prodi');
+            // Tambahkan kolom baru (jangan buat id baru)
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable()->after('name');
+            $table->string('nomor_ijazah_nasional')->nullable()->after('jenis_kelamin');
+            $table->string('gelar')->nullable()->after('nomor_ijazah_nasional');
+            $table->string('tempat_lahir')->nullable()->after('gelar');
             $table->date('tanggal_lahir')->nullable()->after('tempat_lahir');
-            $table->date('Tahun masuk')->nullable()->after('tempat_lahir');
-            $table->date('Tahun lulus')->nullable()->after('Tahun masuk');
+            $table->year('tahun_masuk')->nullable()->after('tanggal_lahir');  // pakai year untuk tahun
+            $table->year('tahun_lulus')->nullable()->after('tahun_masuk');
         });
     }
 
@@ -32,12 +30,13 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn([
-                'tempat_lahir', 
-                'tanggal_lahir', 
-                'fakultas', 
-                'ipk', 
-                'masa_studi', 
-                'tanggal_lulus'
+                'jenis_kelamin',
+                'nomor_ijazah_nasional',
+                'gelar',
+                'tempat_lahir',
+                'tanggal_lahir',
+                'tahun_masuk',
+                'tahun_lulus',
             ]);
         });
     }
