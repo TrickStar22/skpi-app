@@ -32,7 +32,11 @@ Route::prefix('password')->name('password.')->group(function () {
 
 // Halaman yang butuh login
 Route::middleware(['auth'])->group(function () {
-    // Dashboard
+
+    // Di dalam group middleware auth
+    Route::get('/api/mahasiswa/{nim}/prestasi', [PrestasiController::class, 'getMahasiswaPrestasi'])->name('api.mahasiswa.prestasi');
+    
+// Dashboard
     Route::get('/dashboard', [PrestasiController::class, 'index'])->name('dashboard');
     
     // Update identitas mahasiswa (BARU)

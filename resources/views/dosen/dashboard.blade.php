@@ -17,6 +17,21 @@
         background: white; margin: 5% auto; padding: 20px;
         width: 80%; max-width: 800px; border-radius: 10px;
     }
+    .btn-success {
+    background: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    }
+
+    .btn-success:hover {
+    background: #218838;
+    }
     .close { float: right; font-size: 28px; cursor: pointer; }
 </style>
 
@@ -55,6 +70,10 @@
                 <span class="status-badge status-pending">⏳ {{ $m->prestasis->where('status', 'pending')->count() }} Pending</span>
             </div>
             <button class="btn btn-primary" onclick="openModal('{{ $m->nim }}')">Lihat & Kelola</button>
+
+            <a href="{{ route('print.skpi.dosen', $m->nim) }}" class="btn btn-success" target="_blank">
+            🖨️ Cetak SKPI
+        </a>
         </div>
         @endforeach
     </div>
@@ -64,6 +83,9 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h3 style="color: #261CC1; margin-bottom: 20px;">Detail Prestasi Mahasiswa</h3>
+        <a href="#" id="cetakSkpiModal" class="btn btn-success" target="_blank">
+                🖨️ Cetak SKPI Mahasiswa
+            </a>
         <div id="modalInfo" style="margin-bottom: 20px;"></div>
         <table style="width: 100%;">
             <thead>
@@ -111,6 +133,8 @@ function resetFilter() {
 
 function openModal(nim) {
     currentNim = nim;
+
+    document.getElementById('cetakSkpiModal').href = `/print-skpi/${nim}`;
     
     fetch(`/api/mahasiswa/${nim}/prestasi`)
         .then(res => res.json())

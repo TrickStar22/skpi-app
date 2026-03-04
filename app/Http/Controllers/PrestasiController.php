@@ -38,6 +38,62 @@ class PrestasiController extends Controller
     }
 }
 
+    /**
+ * Verifikasi prestasi (khusus dosen)
+ */
+public function verify($id)
+{
+    // Log untuk debugging
+    \Log::info('Verify called for prestasi ID: ' . $id);
+    
+    $prestasi = Prestasi::findOrFail($id);
+    
+    // Cek apakah user adalah dosen
+    if (!Auth::user()->isDosen()) {
+        \Log::error('Unauthorized - User is not dosen');
+        return response()->json(['error' => 'Unauthorized'], 403);
+    }
+    
+    // Update status
+    $prestasi->status = 'verified';
+    $prestasi->save();
+    
+    \Log::info('Prestasi verified successfully');
+    
+    return response()->json(['success' => true]);
+}
+
+    /**
+ * Hapus prestasi (khusus dosen)
+ */
+public function destroy($id)
+{
+    \Log::info('Destroy called for prestasi ID: ' . $id);
+    
+    $prestasi = Prestasi::findOrFail($id);
+    
+    if (!Auth::user()->isDosen()) {
+        return response()->json(['error' => 'Unauthorized'], 403);
+    }
+    
+    $prestasi->delete();
+    
+    return response()->json(['success' => true]);
+}
+   
+    public function getMahasiswaPrestasi($nim)
+{
+    $mahasiswa = User::where('nim', $nim)
+        ->with('prestasis')
+        ->first();
+    
+    if (!$mahasiswa) {
+        return response()->json(['error' => 'Mahasiswa tidak ditemukan'], 404);
+    }
+    
+    return response()->json($mahasiswa);
+}
+
     public function printSKPI($nim = null)
     {
         if ($nim) {
