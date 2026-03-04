@@ -170,13 +170,13 @@
                     <div class="form-group">
                         <label>Nomor Induk Mahasiswa</label>
                         <p><em>Student Number</em></p>
-                        <input type="text" name="Nomor Induk Mahasiswa" class="form-control" value="{{ Auth::user()->nim }}" readonly>
+                        <input type="text" name="Nomor_Induk_Mahasiswa" class="form-control" value="{{ Auth::user()->nim }}" readonly>
                     </div>
                     
                     <div class="form-group">
                         <label>Nomor ljazah Nasional</label>
                         <p><em>National Diploma Number</em></p>
-                        <input type="text" name="Ninomor ljazah Nasional" class="form-control" required>
+                        <input type="text" name="Ninomor_ljazah_Nasional" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -200,13 +200,13 @@
                     <div class="form-group">
                         <label>Tahun Masuk</label>
                         <p><em>year of entry</em><p>
-                        <input type="number" name="tahun masuk" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
+                        <input type="number" name="tahun_masuk" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
 
                     <div class="form-group">
                         <label>Tahun Lulus</label>
                         <p><em>year of graduation</em><p>
-                        <input type="number" name="tahun lulus" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
+                        <input type="number" name="tahun_lulus" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
                 </div>
                 
@@ -260,7 +260,7 @@
                     <div class="form-group">
                         <label>Nilai TOEFL Prediksi</label>
                         <p><em>Prediction TOEFL Score</em></p>
-                        <input type="text" name="Nilai TOFEL Prediksi" class="form-control" required>
+                        <input type="text" name="Nilai_TOFEL_Prediksi" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -272,109 +272,109 @@
                     <div class="form-group">
                         <label>Nilai NKK</label>
                         <p><em>Student Behavioral Score</em></p>
-                        <input type="text" name="Nilai NKK" class="form-control" required>
+                        <input type="text" name="Nilai_NKK" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Program Praktik Industri</label>
                         <p><em>Industrial Practice Program</em></p>
-                        <input type="text" name="Praktek Program Industri" class="form-control" required>
+                        <input type="text" name="Praktek_Program_Industri" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Judul Proyek Akhir</label>
                         <p><em>Final Project Title</em></p>
-                        <input type="text" name="Judul Proyek Akhir" class="form-control" required>
+                        <input type="text" name="Judul_Proyek_Akhir" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Jumlah SKS</label>
                         <p><em>Credits Cumulative</em></p>
-                        <input type="text" name="Jumlah SKS" class="form-control" required>
+                        <input type="text" name="Jumlah_SKS" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Jenis Pendidikan</label>
                         <p><em>Type of Education</em></p>
-                        <input type="text" name="Jenis Pendidikan" class="form-control" required>
+                        <input type="text" name="Jenis_Pendidikan" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Nama Perguruan Tinggi</label>
                         <p><em>College Name</em></p>
-                        <input type="text" name="Nama Perguruan Tinggi" class="form-control" required>
+                        <input type="text" name="Nama_Perguruan_Tinggi" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>SK Pendirian Perguruan Tinggi</label>
                         <p><em>College Licence</em></p>
-                        <input type="text" name="SK Pendirian Perguruan Tinggi" class="form-control" required>
+                        <input type="text" name="SK_Pendirian_Perguruan Tinggi" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Akreditasi Perguruan Tinggi</label>
                         <p><em>College Accreditation</em></p>
-                        <input type="text" name="Akreditasi Perguruan Tinggi" class="form-control" required>
+                        <input type="text" name="Akreditasi_Perguruan_Tinggi" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Jenjang Pendidikan</label>
                         <p><em>Level of Study</em></p>
-                        <input type="text" name="Jenjang Pendidikan" class="form-control" required>
+                        <input type="text" name="Jenjang_Pendidikan" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>SK Pendirian Program Studi</label>
                         <p><em>Study Stream Licence</em></p>
-                        <input type="text" name="SK Pendirian Program Studi" class="form-control" required>
+                        <input type="text" name="SK_Pendirian_Program Studi" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Akreditasi Program Studi</label>
                         <p><em>Study Program Accreditation</em></p>
-                        <input type="text" name="Akreditasi Program Studi" class="form-control" required>
+                        <input type="text" name="Akreditasi_Program Studi" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Jenjang Kualifikasi KKNI</label>
                         <p><em>INQF Qualification Level</em></p>
-                        <input type="text" name="Jenjang Kualifikasi KKNI" class="form-control" required>
+                        <input type="text" name="Jenjang_Kualifikasi_KKNI" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Persyaratan Masuk</label>
                         <p><em>Entry Requirement</em></p>
-                        <input type="text" name="Persyaratan Masuk" class="form-control" required>
+                        <input type="text" name="Persyaratan_Masuk" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Bahasa Pengantar</label>
                         <p><em>Language of Instruction</em></p>
-                        <input type="text" name="Bahasa Pengantar" class="form-control" required>
+                        <input type="text" name="Bahasa_Pengantar" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Lama Study Reguler</label>
                         <p><em>Length of Reguler Study</em></p>
-                        <input type="text" name="Lama Study Reguler" class="form-control" required>
+                        <input type="text" name="Lama_Study_Reguler" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Sistem Penilaian</label>
                         <p><em>Grading System</em></p>
-                        <input type="text" name="Sistem Penilaian" class="form-control" required>
+                        <input type="text" name="Sistem_Penilaian" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Skala IPK Lulusan</label>
                         <p><em>GPA Scale for Graduate</em></p>
-                        <input type="text" name="Skala IPK Lulusan" class="form-control" required>
+                        <input type="text" name="Skala_IPK_Lulusan" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label>Pendidikan Lanjutan</label>
                         <p><em>Further Study</em></p>
-                        <input type="text" name="Pendidikan Lanjutan" class="form-control" required>
+                        <input type="text" name="Pendidikan_Lanjutan" class="form-control" required>
                     </div>
 
                     <div class="form-group">
