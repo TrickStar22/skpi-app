@@ -12,12 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('name')->nullable();
+            $table->enum('Jenis Kelamin', ['laki-laki', 'perempuan']);
+            $table->string('Ninomor ljazah Nasional')->nullable();
+            $table->string('Gelar')->nullable();
             $table->string('tempat_lahir')->nullable()->after('prodi');
             $table->date('tanggal_lahir')->nullable()->after('tempat_lahir');
-            $table->string('fakultas')->nullable()->after('tanggal_lahir');
-            $table->string('ipk')->nullable()->after('fakultas');
-            $table->string('masa_studi')->nullable()->after('ipk');
-            $table->date('tanggal_lulus')->nullable()->after('masa_studi');
+            $table->date('Tahun masuk')->nullable()->after('tempat_lahir');
+            $table->date('Tahun lulus')->nullable()->after('Tahun masuk');
         });
     }
 

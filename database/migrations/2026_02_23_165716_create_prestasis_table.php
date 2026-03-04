@@ -9,16 +9,27 @@ return new class extends Migration
     public function up()
     {
         Schema::create('prestasis', function (Blueprint $table) {
-    $table->id();
-    $table->foreignId('user_id')->constrained();
-    $table->string('nama_kegiatan');        // ← Nama kegiatan
-    $table->enum('tingkat', ['Lokal', 'Regional', 'Nasional', 'Internasional']);
-    $table->string('pencapaian');            // ← Juara 1, Juara 2, dll
-    $table->year('tahun');
-    $table->string('penyelenggara');
-    $table->text('deskripsi')->nullable();   // ← Deskripsi prestasi
-    $table->enum('status', ['pending', 'verified'])->default('pending');
-    $table->timestamps();
+    $table->string('Praktek Program Industri');        // ← Nama kegiatan
+    $table->string('Judul Proyek Akhir'); 
+    $table->string('Nilai TOFEL Prediksi');  
+    $table->string('Jumlah SKS');  
+    $table->string('Nilai NKK');   
+    $table->string('IPK');   
+    $table->string('Jenis Pendidikan');  
+    $table->string('Nama Perguruan Tinggi');  
+    $table->string('SK Pendirian Perguruan Tinggi');  
+    $table->string('Akreditasi Perguruan Tinggi');  
+    $table->string('Jenjang Pendidikan');  
+    $table->enum('prodi', ['Akuntansi', 'Akuntansi Sektor Publik', 'Teknologi Informasi', 'Mekatronika', 'Electronika']);
+    $table->string('SK Pendirian Program Studi'); 
+    $table->string('Akreditasi Program Studi'); 
+    $table->string('Jenjang Kualifikasi KKNI'); 
+    $table->string('Persyaratan Masuk'); 
+    $table->string('Bahasa Pengantar'); 
+    $table->string('Lama Study Reguler');
+    $table->string('Sistem Penilaian');
+    $table->string('Skala IPK Lulusan');
+    $table->string('Pendidikan Lanjutan');
 });
     }
 

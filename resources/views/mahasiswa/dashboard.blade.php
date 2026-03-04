@@ -176,7 +176,7 @@
                     <div class="form-group">
                         <label>Nomor ljazah Nasional</label>
                         <p><em>National Diploma Number</em></p>
-                        <input type="text" name="IPK" class="form-control" required>
+                        <input type="text" name="Ninomor ljazah Nasional" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -200,13 +200,13 @@
                     <div class="form-group">
                         <label>Tahun Masuk</label>
                         <p><em>year of entry</em><p>
-                        <input type="number" name="tahun" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
+                        <input type="number" name="tahun masuk" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
 
                     <div class="form-group">
                         <label>Tahun Lulus</label>
                         <p><em>year of graduation</em><p>
-                        <input type="number" name="tahun" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
+                        <input type="number" name="tahun lulus" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
                 </div>
                 
