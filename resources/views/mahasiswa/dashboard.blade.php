@@ -157,10 +157,14 @@
                         <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}" required>
                     </div>
 
-                    <div class="form-group">
+                   <div class="form-group">
                         <label>Jenis Kelamin</label>
                         <p><em>Gender</em></p>
-                        <input type="text" name="Jenis Kelamin" class="form-control" value="{{ Auth::user()->name }}" required>
+                        <select name="Jenis Kelamin" class="form-control" required>
+                            <option value="">Pilih Jenis Kelamin</option>
+                            <option value="Lokal">Laki-laki</option>
+                            <option value="Regional">Perempuan</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
@@ -172,7 +176,7 @@
                     <div class="form-group">
                         <label>Nomor ljazah Nasional</label>
                         <p><em>National Diploma Number</em></p>
-                        <input type="text" name="nik" class="form-control" value="{{ Auth::user()->nin }}" readonly>
+                        <input type="text" name="IPK" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -194,13 +198,15 @@
                     </div>
                                             
                     <div class="form-group">
-                        <label>Tanggal Masuk</label>
-                        <input type="date" name="tanggal_masuk" class="form-control" value="{{ Auth::user()->tanggal_masuk ?? '' }}" required>
+                        <label>Tahun Masuk</label>
+                        <p><em>year of entry</em><p>
+                        <input type="number" name="tahun" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
 
                     <div class="form-group">
-                        <label>Tanggal Lulus</label>
-                        <input type="date" name="tanggal_lulus" class="form-control" value="{{ Auth::user()->tanggal_lulus ?? '' }}" required>
+                        <label>Tahun Lulus</label>
+                        <p><em>year of graduation</em><p>
+                        <input type="number" name="tahun" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
                 </div>
                 
@@ -231,7 +237,7 @@
                     
                     <div class="form-group">
                         <label>Tahun</label>
-                        <input type="number" name="tahun" class="form-control" value="{{ date('Y') }}" min="2000" max="2026" required>
+                        <input type="number" name="tahun" class="form-control" value="{{ date('Y') }}" min="2000" max="2100" required>
                     </div>
                     
                     <div class="form-group">
@@ -375,7 +381,6 @@
                         <label>Deskripsi</label>
 =======
                         <label>Deskripsi Prestasi</label>
->>>>>>> 74f0b15a5ea6babfafdbdc3c8869486dab67af4e
                         <textarea name="deskripsi" class="form-control" rows="3" placeholder="Jelaskan detail prestasi..."></textarea>
                     </div>
                 </div>

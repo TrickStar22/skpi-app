@@ -118,12 +118,15 @@
     </style>
 </head>
 <body>
+
     {{-- KOP SURAT --}}
     <div class="header">
+        <img src="{{ public_path('image/logo_poltek.png') }}" width="150">
+        <br>
         <h1>KEMENTERIAN PENDIDIKAN TINGGI</h1>
         <h2>UNIVERSITAS POLITEKNIK ACEH</h2>
-        <p>Jl. Pendidikan Nasional No. 1, Jakarta Pusat 12345</p>
-        <p>Telp. (021) 1234567 | Email: info@univ.ac.id</p>
+        <p>Jl. Politeknik Aceh, Pango Raya, Kec. Ulee Kareng, Kota Banda Aceh, Aceh 23116</p>
+        <p>Telp. (021) 08116719201 | Email: pmb@politeknikaceh.ac.id</p>
     </div>
 
     {{-- NOMOR SKPI --}}
