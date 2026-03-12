@@ -121,6 +121,7 @@ public function destroy($id)
    /**
  * Update identitas dan tambah prestasi dalam satu form
  */
+/*
 public function store(Request $request)
 {
     $request->validate([
@@ -165,6 +166,7 @@ public function store(Request $request)
         return redirect()->back()->with('error', 'Error: ' . $e->getMessage());
     }
 }
+*/
 
 public function updateIdentitasLengkap(Request $request)
 {
