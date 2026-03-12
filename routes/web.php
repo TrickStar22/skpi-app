@@ -47,7 +47,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/print-skpi/{nim}', [PrestasiController::class, 'printSKPI'])->name('print.skpi.dosen');
     
     // Prestasi
-    Route::post('/prestasi', [PrestasiController::class, 'store'])->name('prestasi.store');
     Route::post('/prestasi/{id}/verify', [PrestasiController::class, 'verify'])->name('prestasi.verify');
     Route::delete('/prestasi/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
     
