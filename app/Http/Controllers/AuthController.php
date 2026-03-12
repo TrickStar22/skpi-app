@@ -46,7 +46,6 @@ public function loginMahasiswa(Request $request)
     $request->validate([
         'login' => 'required',
         'password' => 'required',
-        'prodi' => 'required', 
         //'g-recaptcha-response' => 'required|captcha', //
     ]);
 
@@ -62,12 +61,6 @@ public function loginMahasiswa(Request $request)
 
     if (!$user) {
         return back()->with('error', 'NIM/Email tidak terdaftar!')
-            ->withInput();
-    }
-
-    // CEK PROGRAM STUDI HARUS SAMA
-    if ($user->prodi !== $request->prodi) {
-        return back()->with('error', 'Program studi tidak sesuai dengan saat registrasi!')
             ->withInput();
     }
 
