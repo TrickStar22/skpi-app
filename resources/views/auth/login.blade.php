@@ -156,16 +156,6 @@
                 <input type="text" name="login" class="form-control" placeholder="Masukkan NIM atau Email" required>
             </div>
             <div class="form-group">
-                <label>Program Studi</label>
-                <select name="prodi" class="form-control" required>
-                    <option value="Akuntansi">Akuntansi</option>
-                    <option value="Akuntansi Sektor Public">Akuntansi Sektor Public</option>
-                    <option value="Teknologi Informasi">Teknologi Informasi</option>
-                    <option value="Mekatronika">Mekatronika</option>
-                    <option value="Electronika">Electronika</option>
-                </select>
-            </div>
-            <div class="form-group">
                 <label>Password</label>
                 <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
             </div>
