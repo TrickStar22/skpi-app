@@ -145,7 +145,7 @@
             <h3>📋 Identitas & Prestasi Mahasiswa</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('prestasi.store') }}" method="POST">
+            <form action="{{ route('mahasiswa.update-identitas-lengkap') }}" method="POST">
                 @csrf
                 
                 {{-- SECTION 1: IDENTITAS MAHASISWA --}}
